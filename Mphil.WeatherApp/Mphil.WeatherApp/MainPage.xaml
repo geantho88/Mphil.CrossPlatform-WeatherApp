@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Mphil.WeatherApp.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+
+    <StackLayout>
+        <Frame
+            BackgroundColor="#2196F3"
+            CornerRadius="0"
+            VerticalOptions="StartAndExpand">
+            <Label
+                FontSize="36"
+                HorizontalTextAlignment="Center"
+                Text="Ocean drivers webcams!"
+                TextColor="White"
+                VerticalTextAlignment="Start" />
+        </Frame>
+        <ListView
+            HasUnevenRows="true"
+            ItemTapped="OnListViewItemTapped"
+            ItemsSource="{Binding WeatherItems}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <!--<Image
+                                Grid.RowSpan="2"
+                                Aspect="AspectFill"
+                                HeightRequest="60"
+                                Source="{Binding url}"
+                                WidthRequest="60" />-->
+                            <ffimageloading:CachedImage
+                                Grid.RowSpan="2"
+                                Aspect="AspectFill"
+                                HeightRequest="60"
+                                Source="{Binding url}"
+                                WidthRequest="60" />
+                            <Label
+                                Grid.Column="1"
+                                FontAttributes="Bold"
+                                Text="{Binding name}" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding location}"
+                                VerticalOptions="End" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
